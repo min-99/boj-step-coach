@@ -51,6 +51,18 @@ boj/
 
 ## Instructions
 
+### 웹 접근 규칙
+
+**https://www.acmicpc.net 사이트에 접속할 때는 반드시 User-Agent 헤더를 포함해야 합니다.**
+WebFetch 도구 사용 시 아래와 같이 `headers` 옵션에 User-Agent를 설정합니다:
+
+```
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+```
+
+이 규칙은 문제 페이지(`/problem/`), 단계 목록(`/step`), 기타 모든 acmicpc.net 하위 경로에 동일하게 적용됩니다.
+User-Agent 없이 요청하면 차단될 수 있으므로, 예외 없이 항상 포함합니다.
+
 ---
 
 ### 기능 1: 파일 자동 생성
