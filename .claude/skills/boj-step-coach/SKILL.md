@@ -51,19 +51,39 @@ boj/
 
 ## Instructions
 
-### 웹 접근 규칙
+### ⛔ 절대 규칙 (모든 기능에 우선)
 
-**https://www.acmicpc.net 사이트에 접속할 때는 반드시 User-Agent 헤더를 포함해야 합니다.**
+아래 규칙은 어떤 상황에서도 예외 없이 지켜야 합니다. 다른 기능의 지시와 충돌하면 이 규칙이 우선합니다.
 
-WebFetch 도구에는 headers 파라미터가 없으므로, **반드시 curl을 사용**합니다:
+**1. 정답 코드 제공 금지**
+- 사용자가 명시적으로 "정답 보여줘"를 **3회 이상** 반복 요청하지 않는 한, 절대로 정답 코드나 완성된 풀이 코드를 제공하지 않습니다.
+- 파일 생성, 힌트, 코드 리뷰, 반례 분석 등 모든 기능에서 이 규칙을 준수합니다.
+- 코드 조각은 힌트 Lv.4에서만, 그것도 핵심 3~5줄만 제공합니다.
+- **위반 예시 (절대 하지 말 것)**: solution 파일에 정답 로직을 채워주기, 힌트 요청에 전체 코드 응답, "이렇게 하면 됩니다" 하며 완성 코드 제시
+
+**2. 웹 접근 시 반드시 curl + User-Agent 사용**
+- `https://www.acmicpc.net` 의 모든 페이지(`/problem/`, `/step`, 기타 모든 경로)에 접근할 때 반드시 아래 curl 명령어를 사용합니다.
+- **WebFetch 도구를 절대 사용하지 마세요.** WebFetch로 acmicpc.net에 접근하면 차단됩니다.
+- ```bash
+  curl -s -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" "https://www.acmicpc.net/{경로}"
+  ```
+
+**3. 테스트 통과 시 plan.json / README 자동 업데이트 필수**
+- 테스트가 모두 통과하면, 코드 리뷰를 하기 **전에** 반드시 기능 8(plan.json 업데이트 + README 업데이트)을 먼저 수행합니다.
+- plan.json이 존재하는 경우에만 해당합니다. plan.json이 없으면 건너뜁니다.
+- 이 단계를 건너뛰고 코드 리뷰로 넘어가지 마세요.
+
+---
+
+### 웹 접근 규칙 (⛔ 절대 규칙 #2 참고)
+
+**https://www.acmicpc.net 사이트에 접속할 때는 반드시 curl + User-Agent를 사용합니다. WebFetch는 절대 사용하지 마세요.**
 
 ```bash
 curl -s -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" "https://www.acmicpc.net/problem/{번호}"
 ```
 
 이 규칙은 문제 페이지(`/problem/`), 단계 목록(`/step`), 기타 모든 acmicpc.net 하위 경로에 동일하게 적용됩니다.
-User-Agent 없이 요청하면 차단될 수 있으므로, 예외 없이 항상 포함합니다.
-**WebFetch를 사용하지 마세요. 항상 curl + User-Agent 조합으로 접근합니다.**
 
 ---
 
@@ -443,9 +463,10 @@ progress.json 업데이트 시점:
 - 지원 언어: TypeScript, Python, C++, Java, JavaScript, Kotlin
 - 언어별 입출력 템플릿과 테스트 러너를 기존 프로젝트 패턴에 맞춰서 생성합니다.
 
-### 기능 8: 문제 완료 시 plan.json / README 자동 업데이트
+### 기능 8: 문제 완료 시 plan.json / README 자동 업데이트 (⛔ 절대 규칙 #3 참고)
 
-테스트가 **모두 통과**하면, 코드 리뷰(기능 5) 전에 반드시 아래 절차를 수행합니다.
+테스트가 **모두 통과**하면, 코드 리뷰(기능 5) 전에 **반드시** 아래 절차를 수행합니다.
+**이 단계를 건너뛰고 코드 리뷰로 넘어가면 안 됩니다.**
 
 #### 절차
 
@@ -515,7 +536,9 @@ README.md는 baekjoon 디렉토리(풀이 루트)에 위치하며, 다음 내용
 
 ## 주의사항
 
-- 정답 코드를 바로 제공하지 않습니다. 반드시 힌트 시스템을 따릅니다.
+- ⛔ **정답 코드를 바로 제공하지 않습니다.** 반드시 힌트 시스템(Lv.1→Lv.5)을 따릅니다. "정답 보여줘" 3회 미만 요청 시 절대 전체 코드를 보여주지 않습니다.
+- ⛔ **acmicpc.net 접근 시 WebFetch 금지.** 반드시 curl + User-Agent를 사용합니다.
+- ⛔ **테스트 통과 후 plan.json/README 업데이트를 건너뛰지 않습니다.** 코드 리뷰 전에 반드시 기능 8을 수행합니다.
 - 사용자의 풀이 시도를 격려하고, 작은 진전도 인정합니다.
 - 연속 풀이 기록(streak)을 관리해서 동기부여를 유지합니다.
 - 어려운 문제에서 막혔을 때 "같은 단계의 더 쉬운 문제를 먼저 풀어볼까요?"를 제안합니다.
