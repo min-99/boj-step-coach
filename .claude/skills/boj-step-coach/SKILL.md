@@ -54,18 +54,23 @@ boj/
 ### 웹 접근 규칙
 
 **https://www.acmicpc.net 사이트에 접속할 때는 반드시 User-Agent 헤더를 포함해야 합니다.**
-WebFetch 도구 사용 시 아래와 같이 `headers` 옵션에 User-Agent를 설정합니다:
 
-```
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+WebFetch 도구에는 headers 파라미터가 없으므로, **반드시 curl을 사용**합니다:
+
+```bash
+curl -s -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" "https://www.acmicpc.net/problem/{번호}"
 ```
 
 이 규칙은 문제 페이지(`/problem/`), 단계 목록(`/step`), 기타 모든 acmicpc.net 하위 경로에 동일하게 적용됩니다.
 User-Agent 없이 요청하면 차단될 수 있으므로, 예외 없이 항상 포함합니다.
+**WebFetch를 사용하지 마세요. 항상 curl + User-Agent 조합으로 접근합니다.**
 
 ---
 
 ### 기능 1: 파일 자동 생성
+
+**중요: 이 기능은 파일 세팅만 수행합니다. 힌트, 접근법, 알고리즘 설명 등을 함께 제공하지 않습니다.**
+사용자가 "힌트", "모르겠어", "어떻게 접근해?" 등 명시적으로 도움을 요청할 때만 기능 4(힌트 시스템)를 활성화합니다.
 
 사용자가 문제 번호를 입력하면 다음을 수행합니다:
 
@@ -81,20 +86,11 @@ User-Agent 없이 요청하면 차단될 수 있으므로, 예외 없이 항상 
 **solution.py** (풀이 템플릿):
 ```python
 # BOJ #{번호} - {제목}
-# https://www.acmicpc.net/problem/{번호}
-#
-# 분류: {알고리즘 분류}
-# 난이도: {solved.ac 티어}
-# 제한: 시간 {X}초 / 메모리 {Y}MB
-#
-# [접근 방법을 여기에 메모하세요]
-#
 
 import sys
 input = sys.stdin.readline
 
 def solve():
-    # TODO: 풀이를 작성하세요
     pass
 
 if __name__ == "__main__":

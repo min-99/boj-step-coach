@@ -8,7 +8,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "WebFetch(domain:www.acmicpc.net)"
+      "WebFetch(domain:www.acmicpc.net)",
+      "Bash(git clean:*)"
     ]
   }
 }
