@@ -2,7 +2,8 @@
   "name": "boj-step-coach",
   "owner": {
     "name": "탁민주",
-    "email": "takminjoo@gmail.com"
+    "email": "takminjoo@gmail.com",
+    "blog": "https://min-99.tistory.com/"
   },
   "metadata": {
     "description": "백준 단계별 문제풀이 코칭 플러그인 마켓플레이스",
@@ -15,7 +16,8 @@
       "version": "1.0.2",
       "description": "백준(BOJ) 단계별 문제풀이 코치 - 파일 자동 생성, 힌트, 코드 리뷰, 반례 분석",
       "author": {
-        "name": "탁민주"
+        "name": "탁민주",
+        "blog": "https://min-99.tistory.com/"
       },
       "keywords": ["baekjoon", "boj", "algorithm"],
       "category": "development"
